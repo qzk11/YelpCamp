@@ -14,7 +14,7 @@ router.get("/", function (req, res) {
     // res.render("campgrounds", { campgrounds: campgrounds });
 })
 // post new campground
-router.post("/", isLoggedIn, function (req, res) {
+router.post("/", middleware.isLoggedIn, function (req, res) {
     // res.send("This is a post route");
     var name = req.body.name;
     var image = req.body.image;
@@ -36,7 +36,7 @@ router.post("/", isLoggedIn, function (req, res) {
     });
 })
 // add new campground 
-router.get("/new", isLoggedIn, function (req, res) {
+router.get("/new", middleware.isLoggedIn, function (req, res) {
     res.render("campgrounds/new");
 });
 // show new campground info
@@ -80,11 +80,5 @@ router.delete("/:id",middleware.checkCampgroundOwnership, function(req, res){
     });
  });
  
- //middleware
- function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
+
 module.exports = router;
