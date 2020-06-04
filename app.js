@@ -30,7 +30,8 @@ passport.deserializeUser(User.deserializeUser());
 
 // Database configuration
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://zhekunqi:zhekunqi@cluster0-arflj.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
