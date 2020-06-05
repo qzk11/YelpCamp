@@ -28,9 +28,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 // Database configuration
+// mongodb://localhost/yelp_camp
+//export DATABASEURL=mongodb://localhost/yelp_camp
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
-// mongoose.connect("mongodb+srv://zhekunqi:zhekunqi@cluster0-arflj.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -61,4 +62,4 @@ app.listen(process.env.PORT, process.env.IP, function () {
 //disconnect with 
 //brew services stop mongodb-community@4.2
 
-
+//git push -f heroku local_branch_name:master
